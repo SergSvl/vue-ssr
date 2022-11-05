@@ -4,10 +4,18 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build:client": "vue-cli-service build",
+    "build:server": "vue-cli-service build --no-clean --server",
+    "build": "npm run build:client && npm run build:server",
+    "devbuild:client": "vue-cli-service build --mode development",
+    "devbuild:server": "vue-cli-service build --no-clean --server --mode development",
+    "devbuild": "npm run devbuild:client && npm run devbuild:server"
   },
   "dependencies": {
+    "@vue/server-renderer": "^3.2.41",
+    "axios": "^1.1.3",
     "core-js": "^3.8.3",
+    "express": "^4.18.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
@@ -16,7 +24,8 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0"
+    "@vue/cli-service": "~5.0.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "browserslist": [
     "> 1%",
